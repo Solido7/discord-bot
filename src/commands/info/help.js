@@ -18,7 +18,7 @@ module.exports = class HelpCommand extends BaseCommand {
         let command = client.commands.get(args[0]);
         if (!command) {
             for (let cmd of client.commands.values()) {
-                if (cmd.aliases && cmd.aliases.includes(cmd.name)) command = cmd;
+                if (cmd.aliases && cmd.aliases.includes(args[0].toLowerCase())) command = cmd;
             }
         }
 
