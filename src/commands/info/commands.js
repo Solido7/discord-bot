@@ -4,6 +4,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = class CommandsCommand extends BaseCommand {
     constructor () {
         super("commands", "info");
+        this.description = "Shows a list of all available commands."
     }
 
     async run (client, message, args) {

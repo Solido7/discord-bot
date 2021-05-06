@@ -5,6 +5,8 @@ module.exports = class RollDiceCommand extends BaseCommand {
     constructor () {
         super("rolldice", "misc");
         this.aliases = ["rd", "roll"];
+        this.description = "Roll dice up to 50 times. The die can have more/less than 6 sides.";
+        this.usage = "`rolldice {num of rolls}` or `rolldice {num of rolls} {num of sides}`"
     }
 
     async run (client, message, args) {
@@ -24,7 +26,6 @@ module.exports = class RollDiceCommand extends BaseCommand {
         const embed = new MessageEmbed()
         .setAuthor(client.user.username, client.user.displayAvatarURL())
         .setColor(process.env.LIGHT_BLUE)
-        .setFooter("Made by Kristian#0109");
 
         if (numberOfDice == 1) {
             embed.setTitle("Rolling a " + numberOfSides + "-sided die");

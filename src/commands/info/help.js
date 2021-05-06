@@ -5,6 +5,8 @@ module.exports = class HelpCommand extends BaseCommand {
     constructor () {
         super("help", "info");
         this.aliases = ["info"];
+        this.description = "Gives more info about given command."
+        this.usage = "`help {command}`";
     }
 
     async run (client, message, args) {
@@ -16,7 +18,7 @@ module.exports = class HelpCommand extends BaseCommand {
         let command = client.commands.get(args[0]);
         if (!command) {
             for (let cmd of client.commands.values()) {
-                if (cmd.aliases && cmd.aliases.includes(cmdname)) command = cmd;
+                if (cmd.aliases && cmd.aliases.includes(cmd.name)) command = cmd;
             }
         }
 

@@ -4,7 +4,9 @@ const { MessageEmbed } = require("discord.js");
 module.exports = class MakeTeamsCommand extends BaseCommand {
     constructor () {
         super("maketeams", "misc");
-        this.aliases = ["mt"];
+        this.aliases = ["mt", "teams"];
+        this.description = "Make teams of any size with given players.";
+        this.usage = "`maketeams {player1, player2..}` or `maketeams {num of teams} {player1, player2..}`"
     }
 
     async run (client, message, args) {
