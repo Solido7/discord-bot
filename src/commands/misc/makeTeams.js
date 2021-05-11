@@ -36,7 +36,6 @@ module.exports = class MakeTeamsCommand extends BaseCommand {
         .setAuthor(client.user.username, client.user.displayAvatarURL())
         .setColor(process.env.LIGHT_BLUE)
         .setTitle("Made " + numberOfTeams + " teams from " + players.length + " players")
-        .setFooter("Made by Kristian#0109");
 
         let fields = new Array();
         for (i = 0; i < teams.length; i++) {
