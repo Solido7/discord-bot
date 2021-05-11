@@ -1,4 +1,5 @@
 const BaseCommand = require("../../utils/structures/BaseCommand");
+const BaseEmbed = require("../../utils/structures/BaseEmbed");
 const { MessageEmbed } = require("discord.js");
 
 module.exports = class MakeTeamsCommand extends BaseCommand {
@@ -32,10 +33,8 @@ module.exports = class MakeTeamsCommand extends BaseCommand {
         });
 
         // Find a way to display the teams
-        const embed = new MessageEmbed()
-        .setAuthor(client.user.username, client.user.displayAvatarURL())
-        .setColor(process.env.LIGHT_BLUE)
-        .setTitle("Made " + numberOfTeams + " teams from " + players.length + " players")
+        const embed = new BaseEmbed(client, message.guild.id)
+            .setTitle("Made " + numberOfTeams + " teams from " + players.length + " players");
 
         let fields = new Array();
         for (i = 0; i < teams.length; i++) {

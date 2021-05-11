@@ -1,5 +1,5 @@
 const BaseCommand = require("../../utils/structures/BaseCommand");
-const { MessageEmbed } = require("discord.js");
+const BaseEmbed = require("../../utils/structures/BaseEmbed");
 
 module.exports = class HelpCommand extends BaseCommand {
     constructor () {
@@ -25,9 +25,7 @@ module.exports = class HelpCommand extends BaseCommand {
         if (command) {
             const fields = this.makeCommandFields(command);
             if (fields.length > 0) {
-                const embed = new MessageEmbed()
-                    .setAuthor(client.user.tag, client.user.displayAvatarURL())
-                    .setColor(process.env.LIGHT_BLUE)
+                const embed = new BaseEmbed(client, message.guild.id)
                     .setTitle(command.name)
                     .addFields(fields);
                 await message.channel.send(embed);

@@ -1,5 +1,5 @@
 const BaseCommand = require("../../utils/structures/BaseCommand");
-const { MessageEmbed } = require("discord.js");
+const BaseEmbed = require("../../utils/structures/BaseEmbed");
 
 module.exports = class CommandsCommand extends BaseCommand {
     constructor () {
@@ -12,9 +12,7 @@ module.exports = class CommandsCommand extends BaseCommand {
         client.commands.forEach(cmd => cmds.push(cmd));
         cmds.sort(function(a, b) { return a.category.localeCompare(b.category)});
 
-        const embed = new MessageEmbed()
-            .setAuthor(client.user.username, client.user.displayAvatarURL())
-            .setColor(process.env.LIGHT_BLUE)
+        const embed = new BaseEmbed(client, message.guild.id);
 
         let finishedCategories = new Array();
         cmds.forEach(cmd => {

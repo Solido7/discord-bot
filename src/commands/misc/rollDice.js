@@ -1,5 +1,5 @@
 const BaseCommand = require("../../utils/structures/BaseCommand");
-const { MessageEmbed } = require("discord.js");
+const BaseEmbed = require("../../utils/structures/BaseEmbed");
 
 module.exports = class RollDiceCommand extends BaseCommand {
     constructor () {
@@ -23,9 +23,7 @@ module.exports = class RollDiceCommand extends BaseCommand {
             rolledDice.push(roll);
         }
 
-        const embed = new MessageEmbed()
-        .setAuthor(client.user.username, client.user.displayAvatarURL())
-        .setColor(process.env.LIGHT_BLUE)
+        const embed = new BaseEmbed(client, message.guild.id);
 
         if (numberOfDice == 1) {
             embed.setTitle("Rolling a " + numberOfSides + "-sided die");
