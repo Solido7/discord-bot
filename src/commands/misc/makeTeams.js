@@ -7,7 +7,7 @@ module.exports = class MakeTeamsCommand extends BaseCommand {
         super("maketeams", "misc");
         this.aliases = ["mt", "teams"];
         this.description = "Make teams of any size with given players.";
-        this.usage = "`maketeams {player1, player2..}` or `maketeams {num of teams} {player1, player2..}`"
+        this.usage = "`_PREFIX_maketeams {player1, player2..}` or `_PREFIX_maketeams {num of teams} {player1, player2..}`"
     }
 
     async run (client, message, args) {

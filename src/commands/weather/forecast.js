@@ -6,7 +6,7 @@ module.exports = class ForecastCommand extends BaseCommand {
     constructor () {
         super("forecast", "weather");
         this.description = "Shows the weather forecast for a location. Bergen by default.";
-        this.usage = "`forecast {location}`"
+        this.usage = "`_PREFIX_forecast {location}`"
     }
 
     async run (client, message, args) {

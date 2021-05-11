@@ -5,7 +5,7 @@ module.exports = class DaysBetweenCommand extends BaseCommand {
         super("daysbetween", "time");
         this.aliases = ["between"];
         this.description = "Shows amount of days between two dates.";
-        this.usage = "`daysbetween {dd.mm.yy} {dd.mm.yy}`. Accepted date formats: `mm.dd`, `mm.dd.yy`, `mm/dd`, etc..";
+        this.usage = "`_PREFIX_daysbetween {dd.mm.yy} {dd.mm.yy}`. Accepted date formats: `mm.dd`, `mm.dd.yy`, `mm/dd`, etc..";
     }
 
     async run (client, message, args) {

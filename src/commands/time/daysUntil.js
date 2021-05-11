@@ -5,7 +5,7 @@ module.exports = class DaysUntilCommand extends BaseCommand {
         super("daysuntil", "time");
         this.aliases = ["days", "daysago"];
         this.description = "Shows amount of days until/since given date.";
-        this.usage = "`daysuntil {dd.mm.yy}`. Accepted date formats: `mm.dd`, `mm.dd.yy`, `mm/dd`, etc..";
+        this.usage = "`_PREFIX_daysuntil {dd.mm.yy}`. Accepted date formats: `mm.dd`, `mm.dd.yy`, `mm/dd`, etc..";
     }
 
     async run (client, message, args) {
