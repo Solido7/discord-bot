@@ -15,7 +15,6 @@ module.exports = class CommandsCommand extends BaseCommand {
         const embed = new MessageEmbed()
             .setAuthor(client.user.username, client.user.displayAvatarURL())
             .setColor(process.env.LIGHT_BLUE)
-            .setFooter("Made by Kristian#0109");
 
         let finishedCategories = new Array();
         cmds.forEach(cmd => {

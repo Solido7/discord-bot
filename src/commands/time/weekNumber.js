@@ -2,7 +2,7 @@ const BaseCommand = require("../../utils/structures/BaseCommand");
 
 module.exports = class WeekNumberCommand extends BaseCommand {
     constructor () {
-        super("weeknumber", "misc");
+        super("weeknumber", "time");
         this.aliases = ["week"];
         this.description = "Get the current week number.";
     }
