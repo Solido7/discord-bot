@@ -3,6 +3,7 @@ const BaseCommand = require("../../utils/structures/BaseCommand");
 module.exports = class DaysBetweenCommand extends BaseCommand {
     constructor () {
         super("daysbetween", "time");
+        this.aliases = ["between"];
         this.description = "Shows amount of days between two dates.";
         this.usage = "`daysbetween {dd.mm.yy} {dd.mm.yy}`. Accepted date formats: `mm.dd`, `mm.dd.yy`, `mm/dd`, etc..";
     }
@@ -12,11 +13,11 @@ module.exports = class DaysBetweenCommand extends BaseCommand {
         let str = "";
 
         args.forEach(d => {
-            let inputArgs;
+            let inputArgs = [];
 
             if (d.includes("/")) inputArgs = d.split("/");
             if (d.includes(".")) inputArgs = d.split(".");
-            if (inputArgs.length < 2) return message.channel.send("Wrong date format.");
+            if (inputArgs.length < 2) return str += ("`" + d + "` is not a valid date format.\n");
 
             inputArgs[2] = (inputArgs[2] ? inputArgs[2] : new Date().getFullYear());
 
@@ -26,7 +27,7 @@ module.exports = class DaysBetweenCommand extends BaseCommand {
             dates.push(date);
         });
 
-        if (dates.length < 2) return message.channel.send(str + "Not enogh valid dates.");
+        if (dates.length < 2) return message.channel.send(str + "Not enough valid dates.");
 
         var firstDate = dates[0];
         var secondDate = dates[1];
@@ -36,7 +37,7 @@ module.exports = class DaysBetweenCommand extends BaseCommand {
         let printDiff = Math.ceil(Math.abs(diffInDays));
 
         let resultString = "Why u do this man..";
-        if (diffInDays != 0) resultString = `There's ${printDiff} days between ${firstDate.toDateString()} and ${secondDate.toDateString()}`
+        if (diffInDays != 0) resultString = `There's ${printDiff} ${(printDiff == 1) ? "day" : "days"} between ${firstDate.toDateString()} and ${secondDate.toDateString()}`;
 
         message.channel.send(resultString);
     }
