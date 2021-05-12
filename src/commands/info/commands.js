@@ -12,7 +12,9 @@ module.exports = class CommandsCommand extends BaseCommand {
         client.commands.forEach(cmd => cmds.push(cmd));
         cmds.sort(function(a, b) { return a.category.localeCompare(b.category)});
 
-        const embed = new BaseEmbed(client, message.guild.id);
+        const embed = new BaseEmbed(client, message.guild.id)
+            .setDescription("List of available commands")
+            .setFooter(`${client.prefixes.get(message.guild.id)}help {command} for more info.`);
 
         let finishedCategories = new Array();
         cmds.forEach(cmd => {
