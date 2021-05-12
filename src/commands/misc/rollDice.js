@@ -6,7 +6,7 @@ module.exports = class RollDiceCommand extends BaseCommand {
         super("rolldice", "misc");
         this.aliases = ["rd", "roll"];
         this.description = "Roll dice up to 50 times. The die can have more/less than 6 sides.";
-        this.usage = "`-PREFIX_rolldice {num of rolls}` or `_PREFIX_rolldice {num of rolls} {num of sides}`"
+        this.usage = "`_PREFIX_rolldice {num of rolls}` or `_PREFIX_rolldice {num of rolls} {num of sides}`"
     }
 
     async run (client, message, args) {
