@@ -11,8 +11,9 @@ module.exports = class DaysUntilCommand extends BaseCommand {
 
     async run (client, message, args) {
         let dateInput = args[0];
-        let dateArgs = [];
+        if (!dateInput) return message.channel.send(new WrongUsage(client, message.guild.id, this, "No date provided."));
 
+        let dateArgs = [];
         if (dateInput.includes("/")) dateArgs = dateInput.split("/");
         if (dateInput.includes(".")) dateArgs = dateInput.split(".");
 
