@@ -6,7 +6,7 @@ module.exports = class DeleteMessagesCommand extends BaseCommand {
         super("deletemessages", "moderation");
         this.aliases = ["delete"];
         this.description = "Delete the last x messages in the channel. Removes 50 messages by default."
-        this.usage = "`delete` or `delete {number}`"
+        this.usage = "`_PREFIX_delete` or `_PREFIX_delete {number}`"
     }
 
     async run (client, message, args) {

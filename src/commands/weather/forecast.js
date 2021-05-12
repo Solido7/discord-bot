@@ -1,12 +1,12 @@
 const BaseCommand = require("../../utils/structures/BaseCommand");
+const BaseEmbed = require("../../utils/structures/BaseEmbed");
 const weather = require('weather-js');
-const { MessageEmbed } = require("discord.js");
 
 module.exports = class ForecastCommand extends BaseCommand {
     constructor () {
         super("forecast", "weather");
         this.description = "Shows the weather forecast for a location. Bergen by default.";
-        this.usage = "`forecast {location}`"
+        this.usage = "`_PREFIX_forecast {location}`"
     }
 
     async run (client, message, args) {
@@ -19,10 +19,8 @@ module.exports = class ForecastCommand extends BaseCommand {
 
             console.log(result[0].forecast);
 
-            const embed = new MessageEmbed()
-                .setAuthor(client.user.username, client.user.displayAvatarURL())
-                .setColor(process.env.LIGHT_BLUE)
-                .setTitle(`Weather forecast for ${result[0].location.name}`)
+            const embed = new BaseEmbed(client, message.guild.id)
+                .setTitle(`Weather forecast for ${result[0].location.name}`);
 
             let fields = new Array();
             result[0].forecast.forEach( d => {

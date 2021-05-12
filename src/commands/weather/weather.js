@@ -1,12 +1,12 @@
 const BaseCommand = require("../../utils/structures/BaseCommand");
+const BaseEmbed = require("../../utils/structures/BaseEmbed");
 const weather = require('weather-js');
-const { MessageEmbed } = require("discord.js");
 
 module.exports = class WeatherCommand extends BaseCommand {
     constructor () {
         super("weather", "weather");
         this.description = "Shows the current weather for a location. Bergen by default.";
-        this.usage = "`weather {location}`"
+        this.usage = "`_PREFIX_weather {location}`"
     }
 
     async run (client, message, args) {
@@ -16,10 +16,8 @@ module.exports = class WeatherCommand extends BaseCommand {
 
         weather.find({search: location, degreeType: 'C'}, function(err, result) {
             if(err) message.channel.send(`Error fetching data for ${location}`);
-           
-            const embed = new MessageEmbed()
-                .setAuthor(client.user.username, client.user.displayAvatarURL())
-                .setColor(process.env.LIGHT_BLUE)
+
+            const embed = new BaseEmbed(client, message.guild.id)
                 .setTitle(`Current weather for ${result[0].location.name}`)
                 .addField("Temperature", `${result[0].current.temperature}°C`, false)
                 .addField("Wind", result[0].current.winddisplay, false)

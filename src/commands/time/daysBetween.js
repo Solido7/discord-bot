@@ -1,11 +1,12 @@
 const BaseCommand = require("../../utils/structures/BaseCommand");
+const WrongUsage = require("../../utils/WrongUsage");
 
 module.exports = class DaysBetweenCommand extends BaseCommand {
     constructor () {
         super("daysbetween", "time");
         this.aliases = ["between"];
         this.description = "Shows amount of days between two dates.";
-        this.usage = "`daysbetween {dd.mm.yy} {dd.mm.yy}`. Accepted date formats: `mm.dd`, `mm.dd.yy`, `mm/dd`, etc..";
+        this.usage = "`_PREFIX_daysbetween {dd.mm.yy} {dd.mm.yy}`. Accepted date formats: `mm.dd`, `mm.dd.yy`, `mm/dd`, etc..";
     }
 
     async run (client, message, args) {
@@ -27,7 +28,7 @@ module.exports = class DaysBetweenCommand extends BaseCommand {
             dates.push(date);
         });
 
-        if (dates.length < 2) return message.channel.send(str + "Not enough valid dates.");
+        if (dates.length < 2) return message.channel.send(new WrongUsage(client, message.guild.id, this, str + "Not enough valid dates."));
 
         var firstDate = dates[0];
         var secondDate = dates[1];
