@@ -1,4 +1,5 @@
 const BaseCommand = require("../../utils/structures/BaseCommand");
+const WrongUsage = require("../../utils/WrongUsage");
 
 module.exports = class DaysBetweenCommand extends BaseCommand {
     constructor () {
@@ -27,7 +28,7 @@ module.exports = class DaysBetweenCommand extends BaseCommand {
             dates.push(date);
         });
 
-        if (dates.length < 2) return message.channel.send(str + "Not enough valid dates.");
+        if (dates.length < 2) return message.channel.send(new WrongUsage(client, message.guild.id, this, str + "Not enough valid dates."));
 
         var firstDate = dates[0];
         var secondDate = dates[1];
