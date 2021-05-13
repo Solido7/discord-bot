@@ -20,12 +20,7 @@ module.exports = class MessageEvent extends BaseEvent {
                     if (cmd.aliases && cmd.aliases.includes(cmdName)) command = cmd;
                 }
             }
-
-            if (cmdArgs.join().includes(prefix)) {
-                message.channel.send("Two commands at once is not allowed!");
-            } else if (command) {
-                command.run(client, message, cmdArgs);              
-            }
+            if (command) command.run(client, message, cmdArgs);              
         }
     }
 }

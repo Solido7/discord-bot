@@ -12,8 +12,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "discord-music-player": "^7.1.4",
     "discord.js": "^12.5.3",
     "dotenv": "^9.0.0",
+    "opusscript": "^0.0.8",
     "weather-js": "^2.0.0"
   }
 }
