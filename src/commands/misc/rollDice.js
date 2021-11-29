@@ -38,6 +38,6 @@ module.exports = class RollDiceCommand extends BaseCommand {
         rolledDice.forEach(d => diceString += (d + "\n"));
         embed.setDescription(diceString);
 
-        message.channel.send(embed);
+        message.channel.send({ embeds: [embed] });
     }
 }

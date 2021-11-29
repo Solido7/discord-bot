@@ -21,7 +21,7 @@ module.exports = class CommandsCommand extends BaseCommand {
             if (!finishedCategories.includes(cmd.category)) embed.addFields(this.makeCategoryField(cmd.category, cmds));
             finishedCategories.push(cmd.category);
         });
-        message.channel.send(embed);
+        message.channel.send({ embeds: [embed] });
     }
 
     makeCategoryField (categoryName, commands) {

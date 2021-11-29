@@ -33,7 +33,7 @@ module.exports = class ForecastCommand extends BaseCommand {
             });
 
             embed.addFields(fields);
-            message.channel.send(embed)
+            message.channel.send({ embeds: [embed] });
           });
     }
 }

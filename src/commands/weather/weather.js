@@ -25,7 +25,7 @@ module.exports = class WeatherCommand extends BaseCommand {
                 .setThumbnail(result[0].current.imageUrl)
                 .setFooter(`Data from ${result[0].current.observationtime}`);
 
-            message.channel.send(embed);
+            message.channel.send({ embeds: [embed] });
           });
 
     }
