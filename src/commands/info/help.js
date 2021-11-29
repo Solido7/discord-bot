@@ -30,7 +30,7 @@ module.exports = class HelpCommand extends BaseCommand {
                 const embed = new BaseEmbed(client, message.guild.id)
                     .setTitle(command.name)
                     .addFields(fields);
-                await message.channel.send(embed);
+                await message.channel.send({ embeds: [embed] });
             } else {
                 message.channel.send("This command has no info, sorry.");
             }

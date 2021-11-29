@@ -53,6 +53,6 @@ module.exports = class MakeTeamsCommand extends BaseCommand {
             fields.push(team);
         }
         embed.addFields(fields);
-        message.channel.send(embed);
+        message.channel.send({ embeds: [embed] });
     }
 }
