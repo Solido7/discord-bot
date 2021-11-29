@@ -10,7 +10,7 @@ module.exports = class ReadyEvent extends BaseEvent {
         console.log(`${client.user.tag} is online.`);
 
         // Sets the bot's presence
-        client.user.setPresence({ activity: { name: "SOMETHING ILLEGAL", type: "STREAMING", url: "https://www.twitch.tv/caps"}, status: "dnd" });
+        client.user.setPresence({ activities: [{ name: "SOMETHING ILLEGAL", type: "STREAMING", url: "https://www.twitch.tv/caps"}], status: "dnd" });
 
 
         /*console.log(client.user.tag + " is online!");
